@@ -1,14 +1,17 @@
 <template>
   <div>
-    <div v-for="menu in this.menus" :key="menu.id">
-      <a v-if="menu.id === titleID" :href="menu.link">{{menu.title}}</a>
-    </div>
+    <template v-for="menu in this.menus">
+      <template v-if="menu.id === titleID">
+        <a :href="menu.link" :key="menu.id">{{menu.title}}</a>
+        <HeaderSubLink :titleID="titleID" :key="menu.id"/>
+      </template>
+    </template>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LinkSolver",
+  name: "HeaderLink",
   props: ["titleID"],
   data: function() {
     return {
@@ -52,6 +55,11 @@ export default {
         }
       ]
     };
-  },
+  }
 };
 </script>
+<style scoped>
+a:hover {
+  color: red;
+}
+</style>

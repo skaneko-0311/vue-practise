@@ -1,34 +1,27 @@
 <template>
-  <div>
-    <ol v-for="titleID in titleIDs" :key="titleID">
-        <LinkSolver v-bind:titleID="titleID" />
-    </ol>
-  </div>
+  <nav>
+    <template v-for="titleID in titleIDs">
+      <HeaderLink :titleID="titleID" :key="titleID" class="header-link"/>
+    </template>
+  </nav>
 </template>
 
 <script>
-import LinkSolver from "./LinkSolver"
+import HeaderLink from "./HeaderLink.vue";
 export default {
   name: "HeaderMenu",
   components: {
-      LinkSolver
+    HeaderLink
   },
   data: function() {
-      return {
-          titleIDs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      }
-  },
-  methods: {
-    makeHeaderLinks: function(menu) {
-      let out = '<a href="' + menu.link + '">' + menu.title + "</a>";
-      return out;
-    }
+    return {
+      titleIDs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    };
   }
 };
 </script>
-
 <style scoped>
-ol {
-  display: inline-block;
+.header-link {
+  display: inline;
 }
 </style>
