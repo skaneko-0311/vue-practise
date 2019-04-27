@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <b-navbar toggleable="lg" type="dark" variant="info">
     <HeaderLogo/>
     <HeaderMenu/>
-  </header>
+  </b-navbar>
 </template>
 
 <script>
