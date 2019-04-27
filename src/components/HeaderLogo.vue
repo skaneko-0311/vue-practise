@@ -1,9 +1,8 @@
 <template>
   <div>
-    <a href>
-      <!-- Why can I not show the image ? ;( -->
-      <img :src="src">
-    </a>
+    <b-navbar-brand href="#">
+      <img :src="image_src">
+    </b-navbar-brand>
   </div>
 </template>
 
@@ -12,7 +11,7 @@ export default {
   name: "HeaderLogo",
   data: function() {
     return {
-      src: "../assets/company_logo.png"
+      image_src: require("../assets/company_logo.png")
     };
   }
 };
