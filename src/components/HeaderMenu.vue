@@ -1,9 +1,12 @@
 <template>
-  <nav>
-    <template v-for="titleID in titleIDs">
-      <HeaderLink :titleID="titleID" :key="titleID" class="header-link"/>
-    </template>
-  </nav>
+  <div>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav v-for="titleID in titleIDs" :key="titleID">
+        <HeaderLink :titleID="titleID" :key="titleID"/>
+      </b-navbar-nav>
+    </b-collapse>
+  </div>
 </template>
 
 <script>

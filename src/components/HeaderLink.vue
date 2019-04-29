@@ -1,21 +1,29 @@
 <template>
   <div>
-    <template v-for="menu in this.menus">
-      <template v-if="menu.id === titleID">
-        <a :href="menu.link" :key="menu.id">{{menu.title}}</a>
-        <HeaderSubLink :titleID="titleID" :key="menu.id"/>
+    <template v-for="headerLink in this.headerLinks">
+      <template v-if="headerLink.id === titleID">
+        <b-nav-item
+          :href="headerLink.link"
+          :key="headerLink.id"
+          :id="`popup-id-${headerLink.id}`"
+        >{{headerLink.title}}</b-nav-item>
+          <HeaderSubLink :titleID="titleID" :popupID="`popup-id-${headerLink.id}`" :key="headerLink.id"/>
       </template>
     </template>
   </div>
 </template>
 
 <script>
+import HeaderSubLink from "./HeaderSubLink.vue";
 export default {
   name: "HeaderLink",
   props: ["titleID"],
+  components: {
+    HeaderSubLink
+  },
   data: function() {
     return {
-      menus: [
+      headerLinks: [
         {
           id: 1,
           title: "サービス一覧",
@@ -53,7 +61,8 @@ export default {
           title: "お問い合わせ",
           link: "https://www.fabercompany.co.jp/contact/"
         }
-      ]
+      ],
+      show: false
     };
   }
 };
